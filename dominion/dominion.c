@@ -658,8 +658,8 @@ int adventurerEffect(struct gameState *state, int *drawntreasure, int *currentPl
         }
         drawCard(*currentPlayer, state);
         *cardDrawn = state->hand[*currentPlayer][state->handCount[*currentPlayer]-1];//top card of hand is most recently drawn card.
-        if (*cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
-           drawntreasure++;
+        if (*cardDrawn == copper || *cardDrawn == silver) // ADD BUG HERE - TAKE OUT LAST OR 
+           (*drawntreasure)++;
         else{
            temphand[z]=*cardDrawn;
            state->handCount[*currentPlayer]--; //this should just remove the top card (the most recently drawn one).
@@ -675,7 +675,7 @@ int adventurerEffect(struct gameState *state, int *drawntreasure, int *currentPl
 int council_roomEffect(struct gameState *state, int *currentPlayer, int handPos){
     int i;
     //+4 Cards
-    for (i = 0; i < 4; i++){
+    for (i = 0; i < 5; i++){ // ADD BUG HERE - CHANGE 4 TO 5
        drawCard(*currentPlayer, state);
     }   
     //+1 Buy
@@ -713,7 +713,7 @@ int feastEffect(struct gameState *state, int *currentPlayer, int choice1, int *t
                 printf("Cards Left: %d\n", supplyCount(choice1, state));
             }
         }
-        else if (state->coins < getCost(choice1)){
+        else if (state->coins <= getCost(choice1)){ // ADD BUG HERE - CHANGE < TO <=
             printf("That card is too expensive!\n");
             if (DEBUG){
                 printf("Coins: %d < %d\n", state->coins, getCost(choice1));
@@ -743,7 +743,7 @@ int feastEffect(struct gameState *state, int *currentPlayer, int choice1, int *t
     return 0;
 }
 int gardensEffect(){
-    return -1;
+    return 1; // ADD BUG HERE - CHANGE -1 TO 1
 }
 int mineEffect(struct gameState *state, int *currentPlayer, int choice1, int choice2, int handPos){
     int i, j = state->hand[*currentPlayer][choice1];  //store card we will trash
@@ -801,7 +801,7 @@ int smithyEffect(struct gameState *state, int *currentPlayer, int handPos){
         drawCard(*currentPlayer, state);
     }
     //discard card from hand
-    discardCard(handPos, *currentPlayer, state, 0);
+    discardCard(handPos, *currentPlayer, state, 1); // ADD BUG HERE - CHANGE 0 TO 1 so that the card is not discarded
     return 0;
 }
 int villageEffect(struct gameState *state, int *currentPlayer, int handPos){
