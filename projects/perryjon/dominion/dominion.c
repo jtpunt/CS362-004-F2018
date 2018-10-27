@@ -280,15 +280,15 @@ int buyCard(int supplyPos, struct gameState *state) {
   who = state->whoseTurn;
 
   if (state->numBuys < 1){
-    if (DEBUG)
+    // if (DEBUG)
       printf("You do not have any buys left\n");
     return -1;
   } else if (supplyCount(supplyPos, state) <1){
-    if (DEBUG)
+    // if (DEBUG)
       printf("There are not any of that type of card left\n");
     return -1;
   } else if (state->coins < getCost(supplyPos)){
-    if (DEBUG) 
+    // if (DEBUG) 
       printf("You do not have enough money to buy that. You have %d coins.\n", state->coins);
     return -1;
   } else {
@@ -298,7 +298,7 @@ int buyCard(int supplyPos, struct gameState *state) {
   
     state->coins = (state->coins) - (getCost(supplyPos));
     state->numBuys--;
-    if (DEBUG)
+    // if (DEBUG)
       printf("You bought card number %d for %d coins. You now have %d buys and %d coins.\n", supplyPos, getCost(supplyPos), state->numBuys, state->coins);
   }
 
@@ -399,18 +399,14 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
-    {
-      if (state->supplyCount[i] == 0)
-	{
-	  j++;
-	}
+  for (i = 0; i < 25; i++){
+    if (state->supplyCount[i] == 0){
+      j++;
     }
-  if ( j >= 3)
-    {
-      return 1;
-    }
-
+  }
+  if ( j >= 3){
+    return 1;
+  }
   return 0;
 }
 
@@ -650,8 +646,9 @@ int cardDrawn
 int temphand[]
 struct gameState *state
 */
+// Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
 int adventurerEffect(struct gameState *state, int *drawntreasure, int *currentPlayer, int *cardDrawn, int *temphand){
-    int z;
+    int z = 0;
     while(*drawntreasure<2){
         if (state->deckCount[*currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
            shuffle(*currentPlayer, state);
@@ -660,13 +657,14 @@ int adventurerEffect(struct gameState *state, int *drawntreasure, int *currentPl
         *cardDrawn = state->hand[*currentPlayer][state->handCount[*currentPlayer]-1];//top card of hand is most recently drawn card.
         if (*cardDrawn == copper || *cardDrawn == silver) // ADD BUG HERE - TAKE OUT LAST OR 
            (*drawntreasure)++;
-        else{
+        else{ 
            temphand[z]=*cardDrawn;
            state->handCount[*currentPlayer]--; //this should just remove the top card (the most recently drawn one).
            z++;
         }
     }
-    while(z-1>=0){
+    // 2 treasure cards have been revealed
+    while(z-1>=0){ // disard the other revealed cards
         state->discard[*currentPlayer][state->discardCount[*currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
@@ -713,11 +711,11 @@ int feastEffect(struct gameState *state, int *currentPlayer, int choice1, int *t
                 printf("Cards Left: %d\n", supplyCount(choice1, state));
             }
         }
-        else if (state->coins <= getCost(choice1)){ // ADD BUG HERE - CHANGE < TO <=
+        else if (state->coins <= getCost(choice1)){ // ADD BUG HERE - CHANGE < TO <=, now you can't buy something when you have the exact amount ready for it
             printf("That card is too expensive!\n");
-            if (DEBUG){
+            // if (DEBUG){
                 printf("Coins: %d < %d\n", state->coins, getCost(choice1));
-            }
+            // }
         }
         else{
 

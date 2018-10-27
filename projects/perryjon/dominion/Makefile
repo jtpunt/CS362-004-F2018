@@ -29,11 +29,30 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
+unit1:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unittest1.c unittestHelper.c unittestHelper.h rngs.o -o unittest1 -lm -g
+unit2:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unittest2.c unittestHelper.c unittestHelper.h rngs.o -o unittest2 -lm -g
+unit3: 
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unittest3.c unittestHelper.c unittestHelper.h rngs.o -o unittest3 -lm -g
+unit4: 
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o unittest4.c unittestHelper.c unittestHelper.h rngs.o -o unittest4 -lm -g
 
+card1: 
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o cardtest1.c unittestHelper.c unittestHelper.h rngs.o -o cardtest1 -lm -g
+
+card2: 
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o cardtest2.c unittestHelper.c unittestHelper.h rngs.o -o cardtest2 -lm -g
+
+card3: 
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o cardtest3.c unittestHelper.c unittestHelper.h rngs.o -o cardtest3 -lm -g
+
+card4:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.o cardtest4.c unittestHelper.c unittestHelper.h rngs.o -o cardtest4 -lm -g
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player 
+all: playdom player unit1 unit2 unit3 unit4 card1 card2 card3 card4
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
