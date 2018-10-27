@@ -14,13 +14,13 @@
 #define COPPER_COINS 1
 #define TESTS 4
 int main(int argc, char** argv)	{
-	struct gameState G;
+	struct gameState state;
 	printf("Testing buyCard Function");
 	int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
-	initializeGame(2, k, 4, &G);
-	G.supplyCount[estate] = 2;
-	G.numBuys = 1; 
-	G.coins = 2;
+	initializeGame(2, k, 4, &state);
+	state.supplyCount[estate] = 2;
+	state.numBuys = 1; 
+	state.coins = 2;
 	// if numBuys is < 1, you don't have any buys left - return -1
 	// else if there is no supply left of that card, then you can't buy it - return -1
 	// else if the # of coins that you have is < cost to buy the item, then you can't buy it - return -1
@@ -30,10 +30,10 @@ int main(int argc, char** argv)	{
 	// # of buys that the player can do decreases by 1
 	// return 0 - no errors
 	// 1st test is to see if we can successfully buy an estate card for 2 coins - which should be true as we have started with 2 coins
-	// 2nd test is to see if we can successfully not buy when there's no supply left
-	// 3rd test is to see if we can successfully not buy when the player has no buys left
+	// 2nd test is to see if we can successfully not buy a card when there's no supply left
+	// 3rd test is to see if we can successfully not buy a card when the player has no buys left
 	// 4th test is to see if the gameState variable 'phase' is equal to 1
-	bool results[TESTS] = {assertTrue(buyCard(1, &G), 0), assertTrue(buyCard(1, &G), -1), assertTrue(buyCard(1, &G), -1), assertTrue(G.phase, 1)};
+	bool results[TESTS] = {assertTrue(buyCard(1, &state), 0), assertTrue(buyCard(1, &state), -1), assertTrue(buyCard(1, &state), -1), assertTrue(state.phase, 1)};
 
 	printFinalResult(results, TESTS);
 	

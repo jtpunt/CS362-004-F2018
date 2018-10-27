@@ -1,8 +1,4 @@
 // Adventurer
-
-// IDEAS:
-// gold card is not looked at, therefore the drawnTreasure count for the player is never increased by 1
-// after cardEffect() is called, which should call AdventurerAffect() later on, the # of coins that the player has should be updated
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "unittestHelper.h"
@@ -19,6 +15,7 @@ int main(int argc, char** argv)	{
 	printf ("Testing Adventurer card\n");
     int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
     initializeGame(2, k, 4, &state);
+    state.deckCount[0] = 0;
 	a = cardEffect(adventurer, 0, 0, 0, &state, 1, 0);
 	int i;
 	bool result = false;

@@ -651,6 +651,7 @@ int adventurerEffect(struct gameState *state, int *drawntreasure, int *currentPl
     int z = 0;
     while(*drawntreasure<2){
         if (state->deckCount[*currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+          printf("EXECUTED\n");
            shuffle(*currentPlayer, state);
         }
         drawCard(*currentPlayer, state);
@@ -713,9 +714,9 @@ int feastEffect(struct gameState *state, int *currentPlayer, int choice1, int *t
         }
         else if (state->coins <= getCost(choice1)){ // ADD BUG HERE - CHANGE < TO <=, now you can't buy something when you have the exact amount ready for it
             printf("That card is too expensive!\n");
-            // if (DEBUG){
+            if (DEBUG){
                 printf("Coins: %d < %d\n", state->coins, getCost(choice1));
-            // }
+            }
         }
         else{
 
@@ -799,7 +800,7 @@ int smithyEffect(struct gameState *state, int *currentPlayer, int handPos){
         drawCard(*currentPlayer, state);
     }
     //discard card from hand
-    discardCard(handPos, *currentPlayer, state, 1); // ADD BUG HERE - CHANGE 0 TO 1 so that the card is not discarded
+    discardCard(handPos, *currentPlayer, state, 1); // ADD BUG HERE - CHANGE 0 TO 1 so that the card is not added to the played pile
     return 0;
 }
 int villageEffect(struct gameState *state, int *currentPlayer, int handPos){
