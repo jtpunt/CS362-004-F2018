@@ -651,7 +651,6 @@ int adventurerEffect(struct gameState *state, int *drawntreasure, int *currentPl
     int z = 0;
     while(*drawntreasure<2){
         if (state->deckCount[*currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-          printf("EXECUTED\n");
            shuffle(*currentPlayer, state);
         }
         drawCard(*currentPlayer, state);

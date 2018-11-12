@@ -20,7 +20,7 @@ int main(int argc, char** argv)	{
 	a = cardEffect(council_room, 0, 0, 0, &state, 1, 0);
 	// test 1 is to see if the player was able to successfully draw 5 cards and remove 1 card from their hand
 	// test 2 is to see if the number of buys that the player can make increased by 1
-	bool results[TESTS] = {assertTrue(cardsOnHand + 5 - 1, numHandCards(&state)), assertTrue(numBuys + 1, state.numBuys)}; // should also double check the value of a
+	bool results[TESTS] = {assertTrue("cardsOnHand", cardsOnHand + 5 - 1, numHandCards(&state)), assertTrue("numBuys", numBuys + 1, state.numBuys)}; // should also double check the value of a
 	printFinalResult(results, TESTS);
 	return 0;
 }

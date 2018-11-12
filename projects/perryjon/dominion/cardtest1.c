@@ -27,7 +27,7 @@ int main(int argc, char** argv)	{
 	}
 	// test 1 is to see if the supply count for gold has stayed the same
 	// test 2 is to prove that the current player has no gold cards in their hand
-	bool results[TESTS] = {assertTrue(state.supplyCount[gold], 30), assertTrue(result, false)};
+	bool results[TESTS] = {assertTrue("supplyCount", state.supplyCount[gold], 30), assertTrue("goldCount", result, false)};
 	printFinalResult(results, TESTS);
 	return 0;
 }

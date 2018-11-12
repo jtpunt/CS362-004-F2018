@@ -33,7 +33,7 @@ int main(int argc, char** argv)	{
 	// 2nd test is to see if we can successfully not buy a card when there's no supply left
 	// 3rd test is to see if we can successfully not buy a card when the player has no buys left
 	// 4th test is to see if the gameState variable 'phase' is equal to 1
-	bool results[TESTS] = {assertTrue(buyCard(1, &state), 0), assertTrue(buyCard(1, &state), -1), assertTrue(buyCard(1, &state), -1), assertTrue(state.phase, 1)};
+	bool results[TESTS] = {assertTrue("buyCard", buyCard(1, &state), 0), assertTrue("buyCard", buyCard(1, &state), -1), assertTrue("buyCard", buyCard(1, &state), -1), assertTrue("phase",state.phase, 1)};
 
 	printFinalResult(results, TESTS);
 	

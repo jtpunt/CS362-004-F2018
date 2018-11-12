@@ -19,7 +19,7 @@ int main(int argc, char** argv)	{
 	a = cardEffect(smithy, 0, 0, 0, &state, 1, 0);
 	// test 1 is to see if the player was able to successfully draw 3 card and remove the smithy card from the player's hand
 	// test 2 is to see if the correct value was returned
-	bool results[TESTS] = {assertTrue(cardsOnHand + 3 - 1, numHandCards(&state)), assertTrue(a, 0)};
+	bool results[TESTS] = {assertTrue("cardsOnHand", cardsOnHand + 3 - 1, numHandCards(&state)), assertTrue("value returned", a, 0)};
 	printFinalResult(results, TESTS);
 	return 0;
 }

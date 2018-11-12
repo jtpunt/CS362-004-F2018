@@ -31,7 +31,7 @@ int main(int argc, char** argv)	{
   	// test 1 is to test to see if the game is over - which is true in this test - meaning the game is not over
   	// test 2 is to test to see if the game is over when the stack of Province cards is empty - which is true in this test - meaning the game is over
   	// test 3 is to test to see if all 3 supply piles are at three - which is true in this test - meaning the game is over
-	bool results[TESTS] = {assertTrue(isGameOver(&A), 0), assertTrue(isGameOver(&B), 1), assertTrue(isGameOver(&C), 1)};
+	bool results[TESTS] = {assertTrue("isGameOver - A", isGameOver(&A), 0), assertTrue("isGameOver - B", isGameOver(&B), 1), assertTrue("isGameOver - C", isGameOver(&C), 1)};
 
 	printFinalResult(results, TESTS);
 	  

@@ -18,7 +18,7 @@ int main(int argc, char** argv)	{
 	initializeGame(2, k, 4, &B);
 	initializeGame(2, k, 4, &C);
 	// tests 1-3 see if the program can properly keep track of whose turn it currently is in the game
-	bool results[TESTS] = {assertTrue(A.whoseTurn, whoseTurn(&A)), assertTrue(B.whoseTurn, whoseTurn(&B)), assertTrue(C.whoseTurn, whoseTurn(&C))};
+	bool results[TESTS] = {assertTrue("whoseTurn - A", A.whoseTurn, whoseTurn(&A)), assertTrue("whoseTurn - B", B.whoseTurn, whoseTurn(&B)), assertTrue("whoseTurn - C", C.whoseTurn, whoseTurn(&C))};
 	printFinalResult(results, TESTS);
 	return 0;
 }

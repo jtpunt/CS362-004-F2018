@@ -35,7 +35,7 @@ int main(int argc, char** argv)	{
     updateCoins(0, &goldState, 0);
     // test 1 compares the # of coins that should be calculated by updateCoins for copper cards to secondary manual calculation of how many coins this should be
     // test 2 - 3 do the same as above, but for silver and gold cards
-    bool results[TESTS] = {assertTrue(copperState.coins, MAX_COINS * COPPER_COINS), assertTrue(silverState.coins, MAX_COINS * SILVER_COINS), assertTrue(goldState.coins, MAX_COINS * GOLD_COINS)};
+    bool results[TESTS] = {assertTrue("COPPER_COINS", copperState.coins, MAX_COINS * COPPER_COINS), assertTrue("SILVER_COINS", silverState.coins, MAX_COINS * SILVER_COINS), assertTrue("GOLD_COINS", goldState.coins, MAX_COINS * GOLD_COINS)};
     printFinalResult(results, TESTS);
 
 	return 0;

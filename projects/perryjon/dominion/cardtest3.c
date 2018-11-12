@@ -20,7 +20,7 @@ int main(int argc, char** argv)	{
     // a = cardEffect(feast, 2, 0, 0, &state, 1, 0); this function call will cause an infinite loop 
 	a = cardEffect(feast, 5, 0, 0, &state, 1, 0); // if you buy card 5 - silver - which costs 3 you can buy it
 	// test 1 is to see if the function returned the correct value
-	bool results[TESTS] = {assertTrue(a, 0)};
+	bool results[TESTS] = {assertTrue("value returned", a, 0)};
 	printFinalResult(results, TESTS);
 	return 0;
 }
