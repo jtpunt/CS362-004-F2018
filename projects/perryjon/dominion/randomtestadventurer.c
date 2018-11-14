@@ -9,27 +9,25 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#define TESTS 3
+#define PER_TEST  5
+#define MAX_TESTS 5
 int main(int argc, char** argv) {
     srand(time(NULL));
     struct gameState stateA, stateB;
-    int currPlayer, numPlayers;
-    int a, i, j, seed = (rand() % 1000) + 1000;
+    int a, i, j;
     int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
     printf ("Testing Adventurer card\n");
-    bool results[TESTS * 5];
+    bool results[MAX_TESTS * PER_TEST];
     int count = 0;
-    for(i = 0; i < TESTS; i++){
+    for(i = 0; i < MAX_TESTS; i++){
         initializeGame(2, k, 4, &stateA);
 
-        stateA.numActions = rand() % 7;
-        stateA.numBuys = rand() % 7;
-        stateA.coins = rand() % 7;
-        stateA.hand[stateA.whoseTurn][0]= adventurer;
+        stateA.numActions = rand() % 10;
+        stateA.handCount[stateA.whoseTurn] = rand() % MAX_HAND;
         stateA.deckCount[stateA.whoseTurn] = rand() % MAX_DECK;
         stateA.discardCount[stateA.whoseTurn] = rand() % MAX_DECK;
-        stateA.handCount[stateA.whoseTurn] = rand() % MAX_HAND;
-
+        int prev_discard_count = stateA.discardCount[stateA.whoseTurn];
+        int prev_hand_count = stateA.handCount[stateA.whoseTurn];
         memcpy(&stateB, &stateA, sizeof(struct gameState));
         a = cardEffect(adventurer, 0, 0, 0, &stateA, 1, 0);
         bool result = false;
@@ -40,12 +38,15 @@ int main(int argc, char** argv) {
                 break;
             }
         }
+        int after_discard_count = stateA.discardCount[stateA.whoseTurn];
+        int after_hand_count = stateA.handCount[stateA.whoseTurn];
         results[count++] = assertTrue("numActions", stateA.numActions, stateB.numActions);
-        results[count++] = assertTrue("discardCount", stateA.discardCount[stateA.whoseTurn], stateB.discardCount[stateB.whoseTurn]);
-        results[count++] = assertTrue("handCount", stateA.handCount[stateA.whoseTurn], stateB.discardCount[stateB.whoseTurn]);
-        results[count++] = assertTrue("supplyCount", stateA.supplyCount[gold], 30);
-        results[count++] = assertTrue("goldCount", result, false);
+        results[count++] = assertTrue("discardCount", stateA.discardCount[stateA.whoseTurn], stateB.discardCount[stateB.whoseTurn] + (after_discard_count - prev_discard_count));
+        results[count++] = assertTrue("handCount", stateA.handCount[stateA.whoseTurn], stateB.discardCount[stateB.whoseTurn] - (stateB.discardCount[stateB.whoseTurn] - prev_hand_count + prev_hand_count - after_hand_count));
+        results[count++] = assertTrue("supplyCount(gold)", stateA.supplyCount[gold], 30);
+        results[count++] = assertTrue("goldCount = 0", result, false);
+        results[count++] = assertTrue("value returned", a, 0);
     }
-    printFinalResult(results, TESTS);
+    printFinalResult(results, MAX_TESTS);
     return 0;
 }

@@ -18,9 +18,9 @@ void printFinalResult(bool results[], int numTests){
 	int i;
 	for(i = 0; i < numTests; i++){
 		if(!results[i]){
-			printf("\nFailed\n");
+			printf("\nFailed\n\n");
 			return;
 		}
 	}
-	printf ("\nPassed\n");
+	printf ("\nPassed\n\n");
 }
