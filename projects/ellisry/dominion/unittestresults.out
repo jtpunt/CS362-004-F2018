@@ -1,0 +1,106 @@
+Result for running unitTest1 tests:
+unitTest1.c:
+TESTING discardCard():
+
+Test 1 - Trash Flag
+PASS: Player trashes card. That card in 'playedCard' pile.
+
+Test 2 - No Trash Flag
+Discarded Card: 4.
+Card in 'discardCard' Pile: 1500092775.
+FAIL: Player discards card. That card in that player's 'discardCard' pile.
+
+Test 3 - Player 0's Hand Count
+Player 0 hand count before discard: 5.
+Player 0 hand count after discard: 4.
+PASS: Player 0 has less cards after 'discardCard'
+
+File 'dominion.c'
+Lines executed:18.21% of 648
+dominion.c:creating 'dominion.c.gcov'
+
+Result for running unitTest2 tests:
+unitTest2.c:
+TESTING fullDeckCount()
+
+Test 1 - Player 1's Deck
+PASS: All 5 adventurer cards accounted for by 'fullDeckCount'.
+
+Test 2 - Enter Invalid (High) Card
+PASS: 'fullDeckCount' did not count any invalid cards.
+
+File 'dominion.c'
+Lines executed:19.29% of 648
+dominion.c:creating 'dominion.c.gcov'
+
+Result for running cardTest1 tests:
+cardTest1.c:
+TESTING smithy
+
+Test 1 - Player 0's Deck/Hand/Discard Piles
+Hand Count: 8, Expected: 7
+FAIL: Amount in hand after playing smithy is NET +2.
+
+Deck Count: 2, Expected: 2
+PASS: Amount in deck after playing smithy is NET -3.
+
+Discard Count: 0, Expected: 1
+FAIL: Amount in discard pile after playing smithy is NET +1.
+
+File 'dominion.c'
+Lines executed:21.30% of 648
+dominion.c:creating 'dominion.c.gcov'
+
+Result for running unitTest1 tests:
+unitTest1.c:
+TESTING discardCard():
+
+Test 1 - Trash Flag
+PASS: Player trashes card. That card in 'playedCard' pile.
+
+Test 2 - No Trash Flag
+Discarded Card: 4.
+Card in 'discardCard' Pile: 1500092775.
+FAIL: Player discards card. That card in that player's 'discardCard' pile.
+
+Test 3 - Player 0's Hand Count
+Player 0 hand count before discard: 5.
+Player 0 hand count after discard: 4.
+PASS: Player 0 has less cards after 'discardCard'
+
+File 'dominion.c'
+Lines executed:21.30% of 648
+dominion.c:creating 'dominion.c.gcov'
+
+Result for running unitTest2 tests:
+unitTest2.c:
+TESTING fullDeckCount()
+
+Test 1 - Player 1's Deck
+PASS: All 5 adventurer cards accounted for by 'fullDeckCount'.
+
+Test 2 - Enter Invalid (High) Card
+PASS: 'fullDeckCount' did not count any invalid cards.
+
+File 'dominion.c'
+Lines executed:21.30% of 648
+dominion.c:creating 'dominion.c.gcov'
+
+Result for running cardTest1 tests:
+cardTest1.c:
+TESTING smithy
+
+Test 1 - Player 0's Deck/Hand/Discard Piles
+Hand Count: 8, Expected: 7
+FAIL: Amount in hand after playing smithy is NET +2.
+
+Deck Count: 2, Expected: 2
+PASS: Amount in deck after playing smithy is NET -3.
+
+Discard Count: 0, Expected: 1
+FAIL: Amount in discard pile after playing smithy is NET +1.
+
+File 'dominion.c'
+Lines executed:21.30% of 648
+dominion.c:creating 'dominion.c.gcov'
+

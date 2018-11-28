@@ -1,0 +1,11 @@
+Result for running randomtestcard1 tests:
+randomtestcard1.c:
+TESTING smithy
+
+
+Test Summary:
+Test 1 - Player 0's Has 2 More Cards In Hand - PASS: 20, FAIL: 0
+File 'dominion.c'
+Lines executed:24.23% of 648
+dominion.c:creating 'dominion.c.gcov'
+

@@ -1,0 +1,11 @@
+Result for running randomtestcard2 tests:
+randomtestcard2.c:
+TESTING embargo
+
+
+Test Summary:
+Test 1 - Player 0's Choice for Supply Card Embargoed - PASS: 0, FAIL: 20
+File 'dominion.c'
+Lines executed:26.54% of 648
+dominion.c:creating 'dominion.c.gcov'
+
